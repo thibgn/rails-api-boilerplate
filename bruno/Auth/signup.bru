@@ -1,5 +1,5 @@
 meta {
-  name: Signup
+  name: signup
   type: http
   seq: 1
 }
@@ -14,12 +14,11 @@ assert {
 }
 
 script:post-response {
-  bru.setVar('user_id', res.body.id)
+  bru.setVar('email', res.body.data.email)
 }
 
 script:pre-request {
   const { faker } = require('@faker-js/faker')
-
 
   req.setBody({
     user: {

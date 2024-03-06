@@ -1,0 +1,18 @@
+meta {
+  name: current_user
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://127.0.0.1:3000/current_user
+  body: json
+}
+
+assert {
+  res.status: eq 200
+}
+
+script:pre-request {
+  req.setHeader("Authorization", "{{token}}");
+}

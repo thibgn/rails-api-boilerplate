@@ -1,0 +1,29 @@
+meta {
+  name: login
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://127.0.0.1:3000/login
+  body: json
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+script:pre-request {
+  req.setBody({
+    user: {
+    email: "{{email}}",
+    password: "password"
+    }
+  })
+}
+
+script:post-response {
+  const token = res.getHeader('authorization')
+  bru.setVar('token', token)
+}
