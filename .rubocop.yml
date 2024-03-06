@@ -1,0 +1,44 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "bin/*"
+    - "db/schema.rb"
+    - "vendor/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+  AllowedPatterns: ['(\A|\s)#']
+
+# Methods cannot exceeds some maximum value (default is 10)
+Metrics/MethodLength:
+  Max: 25
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "config/environments/*"
+    - "spec/factories/*"
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 8
+
+RSpec/NestedGroups:
+  Max: 4
+
+# Disable because rubocop would remove "disable" statements on `rubocop-rspec` cops
+# NB: this especially happens when using "format on save" in editors.
+Lint/RedundantCopDisableDirective:
+  Enabled: false
