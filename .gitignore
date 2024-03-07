@@ -31,3 +31,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore credentials to create them when cloning the repo
+/config/credentials.yml.enc
